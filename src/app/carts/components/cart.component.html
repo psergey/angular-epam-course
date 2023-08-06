@@ -1,0 +1,6 @@
+<div *ngIf='items.length > 0; else cartEmpty'>
+    <div *ngFor="let item of items; trackBy: trackByProductItems">
+        {{item.id}} - {{item.name}}
+      </div>
+</div>
+<ng-template #cartEmpty><b>No items in the shopping cart.</b></ng-template>
