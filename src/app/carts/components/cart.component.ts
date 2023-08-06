@@ -16,6 +16,9 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();
+    this.cartService.addProductSubject$.subscribe(item => {
+      this.items.push(item)
+    });
   }
 
   trackByProductItems = (index: number, item: Product) => {item.id};
