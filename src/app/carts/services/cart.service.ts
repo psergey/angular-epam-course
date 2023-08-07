@@ -11,9 +11,10 @@ export class CartService {
     
     addToCart(product: Product) {
         this.addProductSubject$.next(product);
+        this.items.push(product);
     }
 
     getItems() : Product[] {
-        return [];
+        return [...this.items];
     }
 }
