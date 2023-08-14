@@ -1,8 +1,12 @@
-<ul *ngFor='let product of products'>
-    <li>
-        <app-product-item 
-            [product]='product'
-            (addProductEvent)='addProduct($event)'>
-        </app-product-item>
-    </li>
-</ul>
+<div>
+    <ul class="catalog">
+        <li *ngFor="let product of products" class="cell">
+            <div class="inner">
+                <app-product-item
+                    [product]='product'
+                    (addProduct)='addProduct($event)'>
+                </app-product-item>                
+            </div>
+        </li>
+    </ul>
+</div>

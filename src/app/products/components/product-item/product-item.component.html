@@ -1,5 +1,9 @@
-<div>
-    <p>{{product.name}}</p>
-    <p>{{product.price}}</p>
-    <p><button (click)="onAddItem(product)">+ Add</button></p>
+<div class="product">
+    <div class="picture"><img [src]="product.imageUrl" [alt]="product.name" /></div>
+    <div>{{product.name}}</div>
+    <div class="price">
+        <p class="red">{{product.price}}</p>
+        <div *ngIf='product.inStock; else outOfStock'><button (click)="onAddItem(product)">+ Add</button></div>
+    </div>
+    <ng-template #outOfStock><div>Out of stock.</div></ng-template>
 </div>
