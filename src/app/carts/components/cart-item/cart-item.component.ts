@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
 import { CartItem } from "../../models/cartItem";
 
 @Component({
     selector: 'app-cart-item',
     templateUrl: './cart-item.component.html',
     styleUrls: ['./cart-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartItemComponent {
     @Input() item!: CartItem;
