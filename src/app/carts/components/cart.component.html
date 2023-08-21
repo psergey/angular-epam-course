@@ -6,8 +6,8 @@
     (removeItem)="onRemoveItem(item)">
   </app-cart-item>
   <div>
-    <span>Total Amount</span>
-    <span>{{totalAmount}}</span>
+    <span>Total Amount:&nbsp;</span>
+    <span [ngClass]="{red: totalAmount >= 3000, yellow: totalAmount > 100 && totalAmount < 3000 }">{{totalAmount}}</span>
   </div>
 </div>
 <ng-template #cartEmpty><b>No items in the shopping cart.</b></ng-template>
