@@ -1,0 +1,14 @@
+
+.catalog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .cell {
+        width: 25%;
+
+        .inner {
+            padding: 1em;
+        }
+    }
+}

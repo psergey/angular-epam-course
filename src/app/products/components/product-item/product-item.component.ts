@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Product } from "../../../core/models/product/product";
+import { Product } from "../../models/product";
 
 @Component({
     selector: 'app-product-item',
@@ -9,9 +9,9 @@ import { Product } from "../../../core/models/product/product";
 export class ProductItemComponent
 {
     @Input() product!: Product 
-    @Output() addProductEvent = new EventEmitter<Product>();
+    @Output() addProduct = new EventEmitter<Product>();
 
     onAddItem(item: Product): void {
-        this.addProductEvent.emit(item);
+        this.addProduct.emit(item);
     }
 }

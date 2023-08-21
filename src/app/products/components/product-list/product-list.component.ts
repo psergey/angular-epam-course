@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../../core/models/product/product";
+import { Product } from "../../models/product";
 import { ProductsService } from "../../services/products.service";
 import { CartService } from "../../../carts/services/cart.service";
 
@@ -20,7 +20,11 @@ export class ProductListComponent implements OnInit
     }
 
     addProduct(item: Product): void {
-        console.log(`Adding Product: ${JSON.stringify(item)}`);
-        this.cartService.addToCart(item);
+        this.cartService.addItem({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            amount: 1
+        });
     }
 }

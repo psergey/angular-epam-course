@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Product } from "../../core/models/product/product";
+import { Product } from "../models/product";
 
 @Injectable({
     providedIn: 'root'
@@ -9,24 +9,27 @@ export class ProductsService {
         return [
             {
                 id: `${1}`,
-                name: 'Apple',
+                name: 'Nintendo Switch OLED White',
                 description: 'This is an apple', 
                 price: 0.5,
-                imageUrl: '' 
+                inStock: true,
+                imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/244514262.jpg' 
             },
             { 
                 id: `${2}`,
-                name: 'Orange',
+                name: 'TP-Link Archer C64',
                 description: 'This is an orange', 
                 price: 1,
-                imageUrl: '' 
+                inStock: false,
+                imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/191429256.jpg' 
             },
             {
                 id: `${3}`,
-                name: 'Bread',
+                name: 'Valve Steam Deck 256 GB',
                 description: 'This is a bread', 
-                price: 1.12,
-                imageUrl: ''
+                price: 934,
+                inStock: true,
+                imageUrl: 'https://content.rozetka.com.ua/goods/images/big/322355780.jpg'
             }
         ];
     }

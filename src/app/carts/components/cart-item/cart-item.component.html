@@ -1,0 +1,9 @@
+<div>
+    <span appHighlight [color]='"red"'>{{item.name}}</span>
+    <span><button (click)="onRemoveItem()">Delete</button></span>
+</div>
+<div>
+    <span><button (click)="onRemoveItemQuantity()" [disabled]="item.amount === 1">-</button></span>
+    <span>{{item.amount}}</span>
+    <span><button (click)="onAddItemQuantity()">+</button></span>
+</div>

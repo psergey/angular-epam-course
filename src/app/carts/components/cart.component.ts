@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "../services/cart.service";
-import { Product } from "../../core/models/product/product";
+import { CartItem } from "../models/cartItem";
 
 @Component({
     selector: 'app-cart',
@@ -9,17 +9,29 @@ import { Product } from "../../core/models/product/product";
   })
 export class CartComponent implements OnInit {
 
-  public items: Product[] = [];
+  public items: CartItem[] = [];
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();
-    this.cartService.addProductSubject$.subscribe(item => {
-      this.items.push(item)
+    this.cartService.itemsChangedSubject$.subscribe(items => {
+      this.items = items;
     });
   }
 
-  trackByProductItems = (index: number, item: Product) => {item.id};
+  get totalAmount(): number {
+    return this.cartService.totalCost;
+  }
+
+  onUpdateItemQuantity(item: CartItem, val: number) {
+    item.amount += val;
+  }
+
+  onRemoveItem(item: CartItem) {
+    this.cartService.removeItem(item);
+  }
+
+  trackByProductItems = (index: number, item: CartItem) => {item.id};
 }
