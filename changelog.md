@@ -15,3 +15,14 @@
 - Add cart item component
 - Update cart component, change model from product model to cartItem model, render list of cart item component
 - Update cart service, add additional methods   
+
+
+## [Module 03]
+
+- Add core module
+- Add ConfigOptionsService
+- Add GeneratorService & generatorFactory
+- Add LocalStorageService
+- Add FontSizeClickChangerDirective to shared module
+- Update app component, added new services registration
+- Update template for product item component, added FontSizeClickChangerDirective to div element

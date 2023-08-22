@@ -1,6 +1,6 @@
 <div class="product">
     <div class="picture"><img [src]="product.imageUrl" [alt]="product.name" /></div>
-    <div>{{product.name}}</div>
+    <div appFontSizeClickChanger [step]="2">{{product.name}}</div>
     <div class="price">
         <p class="red">{{product.price}}</p>
         <div *ngIf='product.inStock; else outOfStock'><button (click)="onAddItem(product)">+ Add</button></div>
