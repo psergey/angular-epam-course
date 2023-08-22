@@ -32,6 +32,21 @@ export class CartService {
         this.itemsChangedSubject$.next([...this.items]);
     }
 
+    increaseQuantity(item: CartItem) {
+        this.changeQuantity(item, 1);
+        this.itemsChangedSubject$.next([...this.items]);
+    }
+    
+    decreaseQuantity(item: CartItem) {
+        this.changeQuantity(item, -1);
+        this.itemsChangedSubject$.next([...this.items]);
+    }
+
+    clear(): void {
+        this.items = [...this.items].splice(0);
+        this.itemsChangedSubject$.next([]);
+    }
+
     getItems(): CartItem[] {
         return [...this.items];
     }
@@ -42,5 +57,21 @@ export class CartService {
 
     get totalQuantity(): number {
         return this.items.length;
+    }
+
+    get isEmpty(): boolean {
+        return this.items.length == 0;
+    }
+
+    private changeQuantity(item: CartItem, count: number): void {
+        const itemIndex = this.items.findIndex(i => i.id === item.id);
+        const cartItem = this.items[itemIndex];
+
+        var updatedItem = {
+            ...cartItem,
+            amount: cartItem.amount + count
+        }
+
+        this.items[itemIndex] = updatedItem;
     }
 }

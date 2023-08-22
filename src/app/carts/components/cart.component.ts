@@ -26,7 +26,10 @@ export class CartComponent implements OnInit {
   }
 
   onUpdateItemQuantity(item: CartItem, val: number) {
-    item.amount += val;
+    if (val > 0)
+      this.cartService.increaseQuantity(item);
+    if (val < 0)
+      this.cartService.decreaseQuantity(item);
   }
 
   onRemoveItem(item: CartItem) {
