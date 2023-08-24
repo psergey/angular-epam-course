@@ -22,6 +22,7 @@
 - Add core module
 - Add ConfigOptionsService
 - Add GeneratorService & generatorFactory
+- Add genId generator for generating infinit sequence of integer identifiers
 - Add LocalStorageService
 - Add FontSizeClickChangerDirective to shared module
 - Update app component, added new services registration

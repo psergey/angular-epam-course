@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { genId } from "./gen-id.generator";
 
 @Injectable()
 export class GeneratorService {
@@ -12,5 +13,13 @@ export class GeneratorService {
         }
         
         return ''.concat(...chars);
+    }
+
+    getNewID(): number {
+        const result = genId.next();
+        if (result.done)
+            throw Error('Unable to generate new id');
+
+        return result.value;
     }
 }

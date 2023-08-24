@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { CartsModule } from './carts/carts.module';
@@ -6,6 +6,7 @@ import { ProductsModule } from './products/products.module';
 import { APP_INFO, AppInfo } from './core/services/constants.service';
 import { RANDON_GENERATOR, generatorFactory } from './core/services/generator.factory';
 import { GeneratorService } from './core/services/generator.service';
+import { Subscription, interval, map, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -24,19 +25,31 @@ import { GeneratorService } from './core/services/generator.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('appTitle')
-  appTitle!: ElementRef;
+  private appTitle!: ElementRef;
+  private timerSubscription$!: Subscription;
 
   title = 'Shop' + ` ${this.sequience}`;
 
   constructor(
     @Inject(APP_INFO) public appInfo: {App: string, Ver: string, API_URL: string},
-    @Inject(RANDON_GENERATOR) public sequience: string) {
+    @Inject(RANDON_GENERATOR) public sequience: string,
+    @Optional() private generator: GeneratorService) {
+  }
 
+  ngOnInit(): void {
+
+    this.timerSubscription$ = interval(1500)
+    .pipe(map(_ => this.generator.getNewID()))
+      .subscribe(id => console.log(id));
   }
 
   ngAfterViewInit() {
     this.appTitle.nativeElement.innerText = this.title;
+  }
+
+  ngOnDestroy(): void {
+    this.timerSubscription$.unsubscribe();
   }
 }
