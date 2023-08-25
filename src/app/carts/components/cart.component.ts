@@ -25,6 +25,13 @@ export class CartComponent implements OnInit {
     return this.cartService.totalCost;
   }
 
+  get priceLegend(): any {
+    return {
+      red: this.totalAmount >= 3000, 
+      yellow: this.totalAmount > 100 && this.totalAmount < 3000
+    }
+  }
+
   onUpdateItemQuantity(item: CartItem, val: number) {
     if (val > 0)
       this.cartService.increaseQuantity(item);

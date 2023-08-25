@@ -8,10 +8,10 @@ import { Product } from "../../models/product";
   })
 export class ProductItemComponent
 {
-    @Input() product!: Product 
+    @Input() product!: Product;
     @Output() addProduct = new EventEmitter<Product>();
 
-    onAddItem(item: Product): void {
-        this.addProduct.emit(item);
+    onAddItem(): void {
+        this.addProduct.emit(this.product);
     }
 }
