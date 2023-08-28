@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Product } from "../models/product";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductsService {
-    getProducts(): Product[] {
-        return [
+    getProducts(): Observable<Product[]> {
+        return of([
             {
                 id: `${1}`,
                 name: 'Nintendo Switch OLED White',
@@ -31,6 +32,6 @@ export class ProductsService {
                 inStock: true,
                 imageUrl: 'https://content.rozetka.com.ua/goods/images/big/322355780.jpg'
             }
-        ];
+        ]);
     }
 }

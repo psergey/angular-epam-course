@@ -2,7 +2,7 @@
     <div class="picture"><img [src]="product.imageUrl" [alt]="product.name" /></div>
     <div appFontSizeClickChanger [step]="2">{{product.name}}</div>
     <div class="price">
-        <p class="red">{{product.price}}</p>
+        <p class="red">{{product.price | currency:'USD':'symbol':'1.2-2'}}</p>
         <div *ngIf='product.inStock; else outOfStock'><button (click)="onAddItem()">+ Add</button></div>
     </div>
     <ng-template #outOfStock><div>Out of stock.</div></ng-template>

@@ -1,5 +1,5 @@
 <div>
-    <span appHighlight [color]='"red"'>{{item.name}}</span>
+    <span appHighlight [color]='"red"'>{{item.name | uppercase}}</span>
     <span><button (click)="onRemoveItem()">Delete</button></span>
 </div>
 <div>

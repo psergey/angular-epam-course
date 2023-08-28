@@ -1,6 +1,6 @@
 <div>
     <ul class="catalog">
-        <li *ngFor="let product of products" class="cell">
+        <li *ngFor="let product of products | async | orderBy:'price'" class="cell">
             <div class="inner">
                 <app-product-item
                     [product]='product'

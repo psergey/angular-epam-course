@@ -9,7 +9,16 @@ import { CartItem } from "../models/cartItem";
   })
 export class CartComponent implements OnInit {
 
-  public items: CartItem[] = [];
+  items: CartItem[] = [];
+
+  sortOptions: any[] = [
+    {name: 'Price: Low to high', key: 'price', sortDirection: false},
+    {name: 'Price: High to low', key: 'price', sortDirection: true},
+    {name: 'Name', key: 'name', sortDirection: true},
+    {name: 'Quantity', key: 'amount', sortDirection: false},
+  ];
+
+  selectedOrder: any = undefined;
 
   constructor(private cartService: CartService) {
   }
