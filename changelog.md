@@ -27,3 +27,13 @@
 - Add FontSizeClickChangerDirective to shared module
 - Update app component, added new services registration
 - Update template for product item component, added FontSizeClickChangerDirective to div element
+
+## [Module 04]
+
+- Add OrderByPipe to core module
+- Update product module, add OrderByPipe registration
+- Update product item component, add usage of currency standard pipe
+- Update product lists component, add order-by pipe
+- Update cart module, add OrderByPipe registration
+- Update cart item component, add usage of uppercase standard pipe
+- Update cart component, add sorting selector, add order-by pipe to cart items

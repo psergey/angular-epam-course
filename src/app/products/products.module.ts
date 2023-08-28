@@ -4,12 +4,14 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { ProductItemComponent } from "./components/product-item/product-item.component";
 import { CartsModule } from "../carts/carts.module";
 import { FontSizeClickChangerDirective } from "../shared/derectives/fontsize-click-changer.directive";
+import { OrderByPipe } from "../shared/pipes/order-by.pipe";
 
 @NgModule({
     imports: [
         CommonModule,
         CartsModule,
-        FontSizeClickChangerDirective
+        FontSizeClickChangerDirective,
+        OrderByPipe
     ],
     declarations: [
         ProductListComponent,
