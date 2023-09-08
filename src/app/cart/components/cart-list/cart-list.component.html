@@ -11,7 +11,7 @@
   </app-cart-item>
   <div>
     <span>Total Amount:&nbsp;</span>
-    <span [ngClass]="priceLegend">{{totalAmount | currency}}</span>
+    <span [ngClass]="priceLegend">{{totalAmount | currency}}</span><span><a routerLink="/order">Checkout</a></span>
   </div>
 </div>
 <ng-template #cartEmpty><b>No items in the shopping cart.</b></ng-template>

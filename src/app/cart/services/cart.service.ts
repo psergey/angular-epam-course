@@ -1,5 +1,6 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Subject } from "rxjs";
+import { LocalStorageService } from "src/app/core/services/local-storage.service";
 import { CartItem } from "../models/cartItem";
 
 @Injectable({
@@ -7,6 +8,8 @@ import { CartItem } from "../models/cartItem";
 })
 export class CartService {
     private items: CartItem[] = [];
+    private storage: LocalStorageService = inject(LocalStorageService);
+
     itemsChangedSubject$ = new Subject<CartItem[]>();
     
     addItem(item: CartItem): void {
@@ -24,26 +27,33 @@ export class CartService {
             this.items[itemIndex] = updatedItem;
         }
 
+        this.storage.setItem('cart-items', [...this.items]);
         this.itemsChangedSubject$.next([...this.items]);
     }
 
     removeItem(item: CartItem): void {
         this.items = this.items.filter(i => i.id !== item.id);
+        this.storage.setItem('cart-items', [...this.items]);
         this.itemsChangedSubject$.next([...this.items]);
     }
 
     increaseQuantity(item: CartItem) {
         this.changeQuantity(item, 1);
+
+        this.storage.setItem('cart-items', [...this.items]);
         this.itemsChangedSubject$.next([...this.items]);
     }
     
     decreaseQuantity(item: CartItem) {
         this.changeQuantity(item, -1);
+
+        this.storage.setItem('cart-items', [...this.items]);
         this.itemsChangedSubject$.next([...this.items]);
     }
 
     clear(): void {
         this.items = [...this.items].splice(0);
+        this.storage.setItem('cart-items', []);
         this.itemsChangedSubject$.next([]);
     }
 

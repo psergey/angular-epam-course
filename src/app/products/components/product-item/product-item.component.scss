@@ -25,7 +25,7 @@ div.product {
         margin-bottom: 8px;
         overflow: hidden;
             
-        > img {
+        img {
             position: absolute;
             left: 50%;
             top: 50%;
@@ -36,7 +36,7 @@ div.product {
         }   
     }
 
-    div.picture:before {
+    div.picture > a:before {
         display: block;
         padding-top: 66%;
         padding-bottom: 66%;

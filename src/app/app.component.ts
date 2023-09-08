@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { APP_INFO, AppInfo } from './core/services/constants.service';
 import { RANDON_GENERATOR, generatorFactory } from './core/services/generator.factory';
@@ -12,7 +11,6 @@ import { Subscription, interval, map, timer } from 'rxjs';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CartsModule,
     ProductsModule,
     RouterOutlet,
   ],

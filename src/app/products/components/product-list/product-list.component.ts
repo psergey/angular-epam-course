@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../models/product";
 import { ProductsService } from "../../services/products.service";
-import { CartService } from "../../../carts/services/cart.service";
+import { CartService } from "../../../cart/services/cart.service";
 import { Observable } from "rxjs";
 
 @Component({

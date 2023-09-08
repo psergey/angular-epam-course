@@ -1,0 +1,12 @@
+<ul>
+    <li *ngFor="let product of products">
+        {{product.name}} {{product.amount}}
+    </li>
+</ul>
+<div>
+    <span>Total Amount:&nbsp;</span>
+    <span>{{totalAmount | currency}}</span>
+</div>
+<div>
+    <button (click)="onOrderComplete()">Complete</button>
+</div>

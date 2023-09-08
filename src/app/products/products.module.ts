@@ -1,24 +1,29 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ProductListComponent } from "./components/product-list/product-list.component";
-import { ProductItemComponent } from "./components/product-item/product-item.component";
-import { CartsModule } from "../carts/carts.module";
+import { RouterModule } from "@angular/router";
+
+import { ProductListComponent, ProductItemComponent, ProductDetailsComponent } from "./components";
+import { CartModule } from "../cart/cart.module";
 import { FontSizeClickChangerDirective } from "../shared/derectives/fontsize-click-changer.directive";
 import { OrderByPipe } from "../shared/pipes/order-by.pipe";
+import { ProductsRoutingModule } from "./products-routes.module";
 
 @NgModule({
     imports: [
         CommonModule,
-        CartsModule,
+        RouterModule,
+        CartModule,
         FontSizeClickChangerDirective,
         OrderByPipe
     ],
     declarations: [
         ProductListComponent,
-        ProductItemComponent 
+        ProductItemComponent,
+        ProductDetailsComponent,
     ],
     exports: [
-        ProductListComponent
+        ProductListComponent,
+        ProductsRoutingModule
     ]
 })
 export class ProductsModule {}
