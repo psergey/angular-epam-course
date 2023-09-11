@@ -1,0 +1,10 @@
+<h2>Login</h2>
+<p>{{message}}</p>
+<p>
+  <select #roles (change)="onRoleSelected(roles.value)">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button type="button" (click)="onLogin()"  *ngIf="!authService.isLoggedIn">Login</button>
+  <button type="button" (click)="onLogout()" *ngIf="authService.isLoggedIn">Logout</button>
+</p>

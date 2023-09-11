@@ -37,3 +37,12 @@
 - Update cart module, add OrderByPipe registration
 - Update cart item component, add usage of uppercase standard pipe
 - Update cart component, add sorting selector, add order-by pipe to cart items
+
+## [Module 05]
+- Add admin module
+- Add cart module
+- Add product module
+- Add auth module
+- Add auth service in the auth module
+- Add auth guard in the auth module
+- Update application routings 

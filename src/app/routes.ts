@@ -2,6 +2,8 @@ import { Routes } from "@angular/router";
 
 import { isCartNotEmptyGuard } from "./orders/guards/is-cart-not-empty.guard";
 import { PageNotFound } from "./pages/not-found/not-found.component";
+import { AuthComponent } from "./auth/components/auth.component";
+import { authGuard } from "./auth/guards/auth.guard";
 
 export const routes: Routes = [
     {
@@ -21,7 +23,14 @@ export const routes: Routes = [
     {
         path: 'admin',
         loadChildren: () => import('./admin/admin-routes.module').then(r => r.adminRoutes),
-        //canMatch: [authGuard]
+        canMatch: [authGuard],
+        data: {
+            role: 'admin'
+        }
+    },
+    {
+        path: 'login',
+        component: AuthComponent, 
     },
     {
         path: '**',
