@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 
 import { ProductListComponent, ProductItemComponent, ProductDetailsComponent } from "./components";
@@ -12,6 +13,7 @@ import { ProductsRoutingModule } from "./products-routes.module";
     imports: [
         CommonModule,
         RouterModule,
+        HttpClientModule,
         CartModule,
         FontSizeClickChangerDirective,
         OrderByPipe
