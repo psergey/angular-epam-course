@@ -46,3 +46,6 @@
 - Add auth service in the auth module
 - Add auth guard in the auth module
 - Update application routings 
+
+## [Module 06]
+- Update product service with 

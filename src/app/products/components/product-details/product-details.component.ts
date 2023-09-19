@@ -22,9 +22,7 @@ export class ProductDetailsComponent implements OnInit {
     ngOnInit() {
         this.product$ = this.route.paramMap.pipe(
           switchMap((params: ParamMap) =>
-            this.service.getProducts().pipe(
-                map((products: Product[]) => products.find(item => item.id === params.get('id'))!)))
-        );
+            this.service.getProduct(params.get('id')!)));
     }
 
     onAddProduct(item: Product) {

@@ -16,12 +16,7 @@ export const productDetailsTitleResolver: ResolveFn<string> = (route: ActivatedR
         return of(`${defaultTitle} - Product Details`);
     }
 
-    return service.getProducts().pipe(
-        switchMap(products => {
-            console.log('Getting data for header title');
-            const product = products.find(product => product.id === id);
-            return !product ? of(product) : of(undefined);
-        }),
+    return service.getProduct(id!).pipe(
         switchMap((product: Product | undefined) => {
             console.log('Resolve header title');
             return product ? of(`${defaultTitle} - ${product.name}`) : of(`${defaultTitle} - Product Details`)

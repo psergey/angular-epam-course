@@ -34,12 +34,15 @@ export class ProductFormComponent implements OnInit {
         const product = { ...this.product };
         const method = product.id ? 'updateProduct' : 'addProduct';
     
-        if (product.id) {
-            this.router.navigate(['/admin/products', { id: product.id }]);
-        }
-        
-        this.productService[method](product);
-        this.onGoBack();
+        this.productService[method](product)
+            .subscribe(response => {
+                if (product.id) {
+                    this.router.navigate(['/admin/products', { id: product.id }]);
+                }
+                else {
+                    this.onGoBack();
+                }
+            });
     }
 
     onGoBack(): void {
