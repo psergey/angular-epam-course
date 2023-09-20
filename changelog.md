@@ -48,4 +48,8 @@
 - Update application routings 
 
 ## [Module 06]
-- Update product service with 
+- Add json database
+- Add TimingInterceptor to core module
+- Add AppSettingsService service to core module
+- Update product service with http client
+- Update product resolver
