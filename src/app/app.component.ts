@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     ProductsModule,
     RouterOutlet,
-    HttpClientModule,
+    // HttpClientModule,
   ],
   providers: [
     GeneratorService,

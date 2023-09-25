@@ -12,6 +12,7 @@ export const productResolver: ResolveFn<Product> = (route: ActivatedRouteSnapsho
 
     return productService.getProduct(id).pipe(
         delay(1000),
+        // mergeMap - это стратегия паралельного запуска нескольких запросов
         mergeMap(product => {
             if (product) {
                 return of(product)

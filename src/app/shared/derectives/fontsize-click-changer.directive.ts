@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from "@angular/
 })
 export class FontSizeClickChangerDirective {
 
-    @Input()step: number = 1;
+    @Input() step: number = 1;
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
     }

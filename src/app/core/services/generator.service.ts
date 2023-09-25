@@ -11,7 +11,8 @@ export class GeneratorService {
         for(let i = 0; i < length; i++) {
             chars[i] = this._alphabet[Math.floor(Math.random() * this._alphabet.length)];
         }
-        
+
+        // return chars.join('');
         return ''.concat(...chars);
     }
 

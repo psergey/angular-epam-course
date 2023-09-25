@@ -1,3 +1,4 @@
+<!-- Если не нежуне этот div, то можно использовать <ng-container> -->
 <div *ngIf="product$ | async as product">
     <div>
         <img [src]="product.imageUrl" [alt]="product.name" />

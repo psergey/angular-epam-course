@@ -11,6 +11,7 @@ export const productDetailsTitleResolver: ResolveFn<string> = (route: ActivatedR
 
     const id = route.paramMap.get('id');
 
+    // if (!id) { ... }
     if (id === undefined) {
         console.log('Unable to get header title - No id found')
         return of(`${defaultTitle} - Product Details`);
@@ -27,4 +28,4 @@ export const productDetailsTitleResolver: ResolveFn<string> = (route: ActivatedR
             return of(`${defaultTitle} - Product Details`)
         })
     )
-} 
+}
