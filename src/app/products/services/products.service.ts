@@ -15,23 +15,23 @@ export class ProductsService {
         {
             id: `${1}`,
             name: 'Nintendo Switch OLED White',
-            description: 'This is an apple', 
+            description: 'This is an apple',
             price: 0.5,
             inStock: true,
-            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/244514262.jpg' 
+            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/244514262.jpg'
         },
-        { 
+        {
             id: `${2}`,
             name: 'TP-Link Archer C64',
-            description: 'This is an orange', 
+            description: 'This is an orange',
             price: 1,
             inStock: false,
-            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/191429256.jpg' 
+            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/191429256.jpg'
         },
         {
             id: `${3}`,
             name: 'Valve Steam Deck 256 GB',
-            description: 'This is a bread', 
+            description: 'This is a bread',
             price: 934,
             inStock: true,
             imageUrl: 'https://content.rozetka.com.ua/goods/images/big/322355780.jpg'
@@ -55,7 +55,7 @@ export class ProductsService {
 
     addProduct(product: Product): Observable<object> {
         this.products.push(product);
-        return of();
+        return of(); // of(product) or EMPTY
     }
 
     updateProduct(product: Product): Observable<object> {

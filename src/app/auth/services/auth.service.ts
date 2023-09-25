@@ -9,7 +9,7 @@ export class AuthService {
     private userRole?: string;
 
     get role(): string | undefined {
-        return this.userRole; 
+        return this.userRole;
     }
 
     isLoggedIn: boolean = false;
@@ -26,6 +26,8 @@ export class AuthService {
 
     logout(): void {
         this.isLoggedIn = false;
+        // undefined - считается системным значением и не используется для установки пользовательских значений
+        // null - пользовательское значение, которое мы можем использовать
         this.userRole = undefined;
     }
 

@@ -16,7 +16,7 @@ import { FormsModule } from "@angular/forms";
     styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-    @Input({required: true})product: Product = { id: '', name: '', description: '', price: 0, imageUrl: '', inStock: true };// resolver + withComponentInputBinding
+    @Input({required: true}) product: Product = { id: '', name: '', description: '', price: 0, imageUrl: '', inStock: true };// resolver + withComponentInputBinding
 
     private productService: ProductsService = inject(ProductsService)
     private route: ActivatedRoute = inject(ActivatedRoute)
@@ -33,7 +33,7 @@ export class ProductFormComponent implements OnInit {
     onSaveProduct(): void {
         const product = { ...this.product };
         const method = product.id ? 'updateProduct' : 'addProduct';
-    
+
         this.productService[method](product)
             .subscribe(response => {
                 if (product.id) {

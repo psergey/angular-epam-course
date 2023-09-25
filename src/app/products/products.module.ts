@@ -12,8 +12,9 @@ import { ProductsRoutingModule } from "./products-routes.module";
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
-        HttpClientModule,
+        // RouterModule,
+        ProductsRoutingModule,
+        // HttpClientModule,
         CartModule,
         FontSizeClickChangerDirective,
         OrderByPipe

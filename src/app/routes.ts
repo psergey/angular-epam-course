@@ -22,6 +22,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
+        // смущает название *.module, это ведь не модуль, а массив роутов
         loadChildren: () => import('./admin/admin-routes.module').then(r => r.adminRoutes),
         canMatch: [authGuard],
         data: {
@@ -30,7 +31,7 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: AuthComponent, 
+        component: AuthComponent,
     },
     {
         path: '**',
