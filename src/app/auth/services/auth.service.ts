@@ -1,18 +1,16 @@
 import { Injectable } from "@angular/core";
-import { emitWarning } from "process";
 import { delay, Observable, of, tap } from "rxjs";
 
 @Injectable({
     providedIn: "root"
 })
 export class AuthService {
-    private userRole?: string;
+    isLoggedIn: boolean = false;
+    private userRole: string | null = null;
 
-    get role(): string | undefined {
+    get role(): string | null {
         return this.userRole; 
     }
-
-    isLoggedIn: boolean = false;
 
     login(isAdmin: boolean = false): Observable<boolean> {
         return of(true).pipe(
@@ -26,7 +24,7 @@ export class AuthService {
 
     logout(): void {
         this.isLoggedIn = false;
-        this.userRole = undefined;
+        this.userRole = null;
     }
 
     isInRole(role: string): boolean {

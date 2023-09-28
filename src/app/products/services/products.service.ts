@@ -11,32 +11,7 @@ export class ProductsService {
 
     private httpClient: HttpClient = inject(HttpClient);
 
-    private products = [
-        {
-            id: `${1}`,
-            name: 'Nintendo Switch OLED White',
-            description: 'This is an apple', 
-            price: 0.5,
-            inStock: true,
-            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/244514262.jpg' 
-        },
-        { 
-            id: `${2}`,
-            name: 'TP-Link Archer C64',
-            description: 'This is an orange', 
-            price: 1,
-            inStock: false,
-            imageUrl: 'https://content1.rozetka.com.ua/goods/images/big/191429256.jpg' 
-        },
-        {
-            id: `${3}`,
-            name: 'Valve Steam Deck 256 GB',
-            description: 'This is a bread', 
-            price: 934,
-            inStock: true,
-            imageUrl: 'https://content.rozetka.com.ua/goods/images/big/322355780.jpg'
-        }
-    ];
+    private products: Product[] = [];
 
     getProducts(): Observable<Product[]> {
         //return of(this.products)
@@ -54,8 +29,7 @@ export class ProductsService {
     }
 
     addProduct(product: Product): Observable<object> {
-        this.products.push(product);
-        return of();
+        return this.httpClient.post('http://localhost:3000/products/', product);
     }
 
     updateProduct(product: Product): Observable<object> {
@@ -63,7 +37,6 @@ export class ProductsService {
         // if (i > -1) {
         //     this.products.splice(i, 1, product);
         // }
-        console.log(product);
         return this.httpClient.put('http://localhost:3000/products/' + product.id, product);
     }
 }

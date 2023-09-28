@@ -7,8 +7,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderByPipe implements PipeTransform {
 
   transform(data: any[] | null, key: string, sortOrder: boolean = false): any[] | null {
-    if (data == undefined)
+    if (!data) {
       return data;
+    }
     
     const result = data.sort((first, second) => {
       if (!(key in first) || !(key in second))

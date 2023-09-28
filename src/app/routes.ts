@@ -22,7 +22,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        loadChildren: () => import('./admin/admin-routes.module').then(r => r.adminRoutes),
+        loadChildren: () => import('./admin/admin-routes').then(r => r.adminRoutes),
         canMatch: [authGuard],
         data: {
             role: 'admin'

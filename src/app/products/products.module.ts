@@ -1,7 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
 
 import { ProductListComponent, ProductItemComponent, ProductDetailsComponent } from "./components";
 import { CartModule } from "../cart/cart.module";
@@ -12,8 +10,7 @@ import { ProductsRoutingModule } from "./products-routes.module";
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
-        HttpClientModule,
+        ProductsRoutingModule,
         CartModule,
         FontSizeClickChangerDirective,
         OrderByPipe

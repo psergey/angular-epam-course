@@ -33,6 +33,9 @@ export class ProductFormComponent implements OnInit {
     onSaveProduct(): void {
         const product = { ...this.product };
         const method = product.id ? 'updateProduct' : 'addProduct';
+
+        console.log(product);
+        console.log(method);
     
         this.productService[method](product)
             .subscribe(response => {

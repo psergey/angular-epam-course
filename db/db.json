@@ -23,6 +23,11 @@
       "price": 934,
       "inStock": true,
       "imageUrl": "https://content.rozetka.com.ua/goods/images/big/322355780.jpg"
+    },
+    {
+      "name": "Master Card",
+      "price": "453",
+      "id": 4
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { Observable } from "rxjs";
 
 import { Product } from "../../../../products/models/product";
@@ -9,7 +9,7 @@ import { ProductItemComponent } from "../product-item/product-item.component";
 
 @Component({
     standalone: true,
-    imports: [CommonModule, ProductItemComponent],
+    imports: [CommonModule, RouterModule, ProductItemComponent],
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.scss']
 })

@@ -12,7 +12,7 @@ export class GeneratorService {
             chars[i] = this._alphabet[Math.floor(Math.random() * this._alphabet.length)];
         }
         
-        return ''.concat(...chars);
+        return chars.join('');
     }
 
     getNewID(): number {
