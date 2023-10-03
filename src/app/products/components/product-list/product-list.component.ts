@@ -1,8 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../models/product";
-import { ProductsService } from "../../services/products.service";
-import { CartService } from "../../../cart/services/cart.service";
+import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+
+import { Product } from "../../models/product";
+//import { ProductsService } from "../../services/products.service";
+import { CartService } from "../../../cart/services/cart.service";
+import { selectProducts } from "../../store/products.selectors";
+import * as ProductActions from '../../store/products.actions';
+import * as CartActions from "../../../cart/store/cart.actions";
 
 @Component({
     selector: 'app-product-list',
@@ -11,21 +16,32 @@ import { Observable } from "rxjs";
   })
 export class ProductListComponent implements OnInit
 {
-    products!: Observable<Product[]>;
+    readonly products$: Observable<Product[]> = this.store.select(selectProducts);
 
-    constructor(private productsService: ProductsService, private cartService: CartService) {
+    // constructor(private productsService: ProductsService, private cartService: CartService) {
+    // }
+
+    constructor(private store: Store,  private cartService: CartService) {
     }
 
     ngOnInit(): void {
-        this.products = this.productsService.getProducts();
+        this.store.dispatch(ProductActions.opened());
+        //this.products$ = this.productsService.getProducts();
     }
 
     addProduct(item: Product): void {
-        this.cartService.addItem({
+        this.store.dispatch(CartActions.addItem({
             id: item.id,
             name: item.name,
             price: item.price,
             amount: 1
-        });
+        }));
+
+        // this.cartService.addItem({
+        //     id: item.id,
+        //     name: item.name,
+        //     price: item.price,
+        //     amount: 1
+        // });
     }
 }

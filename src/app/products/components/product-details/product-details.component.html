@@ -9,6 +9,9 @@
         <div>
             <p class="red">{{product.price | currency:'USD':'symbol':'1.2-2'}}</p>
             <div *ngIf='product.inStock; else outOfStock'><button (click)="onAddProduct(product)">+ Add</button></div>
+            <div>
+                <button (click)="onNavigateBack()">Back to List</button>
+            </div>
             <ng-template #outOfStock><div>Out of stock.</div></ng-template>
         </div>
     </div>

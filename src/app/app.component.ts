@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Subscription, interval, map, timer } from 'rxjs';
 
 import { ProductsModule } from './products/products.module';
 import { APP_INFO, AppInfo } from './core/services/constants.service';
-import { Subscription, interval, map, timer } from 'rxjs';
 import { AppSettingsService, RANDON_GENERATOR, generatorFactory, GeneratorService } from './core/services';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
