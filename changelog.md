@@ -53,3 +53,14 @@
 - Add AppSettingsService service to core module
 - Update product service with http client
 - Update product resolver
+
+## [Module 07]
+- Add Ngrx Store
+- Add route store with default behaviour
+- Add store to products module
+- Add facade service to products module for consuming store
+- Update product lists component, replace services with productsFacade and cartFacade
+- Update product details component, replace services with productsFacade
+- Add store to cart module
+- Add facade service to cart module for consuming store
+- Update cart lists component, replace service with cartFacade

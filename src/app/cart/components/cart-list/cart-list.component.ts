@@ -6,6 +6,7 @@ import { CartService } from "../../services/cart.service";
 import { CartItem } from "../../models/cartItem";
 import { getCart, getCartTotal } from "../../store/cart.selector";
 import * as CartActions from "../../store/cart.actions";
+import { CartFacade } from "../../services/cart.facade";
 
 @Component({
     selector: 'app-cart-list',
@@ -14,9 +15,10 @@ import * as CartActions from "../../store/cart.actions";
   })
 export class CartListComponent implements OnInit {
 
-  private store: Store = inject(Store);
+  private сartFacade: CartFacade = inject(CartFacade);
 
-  items$: Observable<CartItem[]> = this.store.select(getCart);
+  items$: Observable<CartItem[]> = this.сartFacade.cart$;
+  //items$: Observable<CartItem[]> = this.store.select(getCart);
 
   sortOptions: any[] = [
     {name: 'Price: Low to high', key: 'price', sortDirection: false},
@@ -25,7 +27,7 @@ export class CartListComponent implements OnInit {
     {name: 'Quantity', key: 'amount', sortDirection: false},
   ];
 
-  selectedOrder: any = undefined;
+  selectedOrder: any = null;
 
   // constructor(private cartService: CartService) {
   // }
@@ -38,7 +40,9 @@ export class CartListComponent implements OnInit {
   }
 
   get totalAmount$(): Observable<number> {
-    return this.store.select(getCartTotal)
+    return this.сartFacade.cartTotal$;
+
+    //return this.store.select(getCartTotal)
     //return this.cartService.totalCost;
   }
 
@@ -55,19 +59,27 @@ export class CartListComponent implements OnInit {
   }
 
   onUpdateItemQuantity(item: CartItem, val: number) {
+    if (val > 0) {
+      this.сartFacade.increaseItemQuantities(item);
+    } else {
+      this.сartFacade.decreaseItemQuantities(item);
+    }
+
     // if (val > 0)
     //   this.cartService.increaseQuantity(item);
     // if (val < 0)
     //   this.cartService.decreaseQuantity(item);
-    if (val > 0) {
-      this.store.dispatch(CartActions.increaseItemQuantities(item));
-    } else {
-      this.store.dispatch(CartActions.decreaseItemQuantities(item));
-    }
+    // if (val > 0) {
+    //   this.store.dispatch(CartActions.increaseItemQuantities(item));
+    // } else {
+    //   this.store.dispatch(CartActions.decreaseItemQuantities(item));
+    // }
   }
 
   onRemoveItem(item: CartItem) {
-    this.store.dispatch(CartActions.removeItem(item));
+    this.сartFacade.removeItem(item);
+
+    //this.store.dispatch(CartActions.removeItem(item));
     //this.cartService.removeItem(item);
   }
 

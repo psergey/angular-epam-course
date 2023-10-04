@@ -1,6 +1,6 @@
 <div *ngIf='(items$ | async)?.length !== 0; else cartEmpty'>
   <select [(ngModel)]="selectedOrder">
-    <option [ngValue]="undefined" disabled selected="selected">Sort by</option>
+    <option [ngValue]="null" disabled selected="selected">Sort by</option>
     <option *ngFor="let item of sortOptions" [ngValue]="item">{{item.name}}</option>
   </select>
   <app-cart-item

@@ -16,3 +16,9 @@ export const selectProducts = createSelector(
 );
 
 export const selectSelectedProductId = selectRouteParam('id');
+
+export const selectSingleProduct = createSelector(
+    products,
+    selectSelectedProductId,
+    (productsState, productId) => productsState.products.find(item => item.id == productId)
+);
