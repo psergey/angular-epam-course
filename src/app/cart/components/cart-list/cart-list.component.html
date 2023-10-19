@@ -1,17 +1,17 @@
-<div *ngIf='items.length > 0; else cartEmpty'>
+<div *ngIf='(items$ | async)?.length !== 0; else cartEmpty'>
   <select [(ngModel)]="selectedOrder">
-    <option [ngValue]="undefined" disabled selected="selected">Sort by</option>
+    <option [ngValue]="null" disabled selected="selected">Sort by</option>
     <option *ngFor="let item of sortOptions" [ngValue]="item">{{item.name}}</option>
   </select>
   <app-cart-item
-    *ngFor="let item of !selectedOrder ? items : (items | orderBy:selectedOrder.key:selectedOrder.sortDirection); trackBy: trackByProductItems"
+    *ngFor="let item of !selectedOrder ? (items$ | async) : ((items$ | async) | orderBy:selectedOrder.key:selectedOrder.sortDirection); trackBy: trackByProductItems"
     [item]="item"
     (updateItemQuantity)="onUpdateItemQuantity(item, $event)"
     (removeItem)="onRemoveItem(item)">
   </app-cart-item>
   <div>
     <span>Total Amount:&nbsp;</span>
-    <span [ngClass]="priceLegend">{{totalAmount | currency}}</span><span><a routerLink="/order">Checkout</a></span>
+    <span [ngClass]="priceLegend((totalAmount$ | async))">{{totalAmount$ | async | currency}}</span><span><a routerLink="/order">Checkout</a></span>
   </div>
 </div>
 <ng-template #cartEmpty><b>No items in the shopping cart.</b></ng-template>

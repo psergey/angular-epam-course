@@ -7,6 +7,8 @@ import { SharedModule } from "../shared/shared.module";
 import { OrderByPipe } from "../shared/pipes/order-by.pipe";
 import { CartComponent } from "./cart.component";
 import { CartRouteModule } from "./cart-routes.module";
+import { StoreModule } from "@ngrx/store";
+import { cartReducer, cartStoreKey } from "./store/cart.reducer";
 
 @NgModule({
     imports: [
@@ -14,7 +16,8 @@ import { CartRouteModule } from "./cart-routes.module";
         FormsModule,
         CartRouteModule,
         SharedModule,
-        OrderByPipe
+        OrderByPipe,
+        StoreModule.forFeature(cartStoreKey, cartReducer)
     ],
     declarations: [
         CartComponent,
