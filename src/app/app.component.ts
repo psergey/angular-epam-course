@@ -57,3 +57,4 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.timerSubscription$.unsubscribe();
   }
 }
+// ok
